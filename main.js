@@ -37,7 +37,14 @@ play.setToken({
 });
 const player = new Player(client, client)
 // play-dl extractor'ını discord-player'a tanıtıyoruz
-player.extractors.register(require('@discord-player/extractor').PlayDlExtractor, {});
+const { PlayDlExtractor } = require('@discord-player/extractor'); // 1. Önce import et
+
+if (PlayDlExtractor) {
+    player.extractors.register(PlayDlExtractor, {}); // 2. Sonra kullan
+    console.log("PlayDlExtractor basariyla yuklendi!");
+} else {
+    console.error("HATA: PlayDlExtractor bulunamadi! Paketlerin yuklu oldugundan emin ol.");
+}
 
 console.clear();
 require('./loader');
