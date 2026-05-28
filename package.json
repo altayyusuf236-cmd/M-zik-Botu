@@ -5,7 +5,7 @@
     "version": "8.0.0",
     "description": "discord.gg/vsc",
     "scripts": {
-        "start": "node main.js"
+        "start": "node --max-old-space-size=450 main.js"
     },
     "dependencies": {
         "@discord-player/extractor": "^4.3.1",
