@@ -11,7 +11,9 @@ app.get('/', (req, res) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`Web sunucusu ${port} portunda dinliyor.`);
 });
-
+const ffmpeg = require('ffmpeg-static');
+process.env.FFMPEG_PATH = ffmpeg;
+console.log("FFmpeg yolu başarıyla tanımlandı: " + ffmpeg);
 const { Player } = require('discord-player');
 const { Client, GatewayIntentBits } = require('discord.js');
 const play = require('play-dl');
