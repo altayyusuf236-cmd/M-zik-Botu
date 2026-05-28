@@ -12,7 +12,6 @@ app.listen(port, () => {
   console.log(`Web sunucusu ${port} portunda dinliyor.`);
 });
 
-
 const { Player } = require('discord-player');
 const play = require('play-dl');
 const { Client, GatewayIntentBits } = require('discord.js');
@@ -35,12 +34,15 @@ play.setToken({
         cookie: process.env.YOUTUBE_COOKIE
     }
 });
-const player = new Player(client, client)
-// play-dl extractor'ını discord-player'a tanıtıyoruz
-const { PlayDlExtractor } = require('@discord-player/extractor'); // 1. Önce import et
+
+// Player başlatılıyor
+const player = new Player(client, client.config.opt.discordPlayer);
+
+// PlayDlExtractor tanıtımı
+const { PlayDlExtractor } = require('@discord-player/extractor');
 
 if (PlayDlExtractor) {
-    player.extractors.register(PlayDlExtractor, {}); // 2. Sonra kullan
+    player.extractors.register(PlayDlExtractor, {}); 
     console.log("PlayDlExtractor basariyla yuklendi!");
 } else {
     console.error("HATA: PlayDlExtractor bulunamadi! Paketlerin yuklu oldugundan emin ol.");
