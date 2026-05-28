@@ -17,8 +17,7 @@ module.exports = {
     ],
 
     async execute({ inter, client }) {
-        // Discord'un 3 saniye sınırını aşmamak için yanıtı erteliyoruz
-        await inter.deferReply(); 
+ 
 
         const player = useMainPlayer();
         const song = inter.options.getString('song');
