@@ -1,26 +1,19 @@
 { 
-    "name": "jayus müzik",
+    "name": "jayus-muzik",
     "main": "main.js",
-    "author": "qoldslitz",
-    "version": "8.0.0",
-    "description": "discord.gg/jayus",
+    "version": "1.0.0",
     "scripts": {
-        "start": "node --max-old-space-size=450 main.js"
+        "start": "node main.js"
     },
     "dependencies": {
-        "@discord-player/extractor": "^4.5.0",
-        "@discordjs/opus": "^0.9.0",
-        "@distube/ytdl-core": "^4.14.4",
-        "@evan/opus": "^1.0.3",
-        "bgutils-js": "^3.2.0",
-        "discord-player": "6.6.9",
-        "play-dl": "^1.9.7",
-        "discord-player-youtubei": "^1.3.3",
         "discord.js": "^14.14.0",
-        "express": "^4.19.2",
-        "dotenv": "^16.4.5",
+        "discord-player": "^6.6.9",
+        "@discord-player/extractor": "^4.5.0",
+        "play-dl": "^1.9.7",
+        "@discordjs/opus": "^0.9.0",
         "ffmpeg-static": "^5.2.0",
-        "ms": "^3.0.0-canary.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
         "translate": "^3.0.0"
     }
 }
