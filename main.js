@@ -1,5 +1,18 @@
 require('dotenv').config(); //discord.gg/vsc ❤️ oxyinc, can066
 
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Bot aktif ve çalışıyor!');
+});
+
+app.listen(port, () => {
+  console.log(`Web sunucusu ${port} portunda dinliyor.`);
+});
+
+
 const { Player } = require('discord-player');
 const { Client, GatewayIntentBits } = require('discord.js');
 const { YoutubeiExtractor } = require('discord-player-youtubei');
