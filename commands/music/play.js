@@ -30,11 +30,13 @@ module.exports = {
             return inter.editReply({ embeds: [defaultEmbed] });
         }
 
-        // Render sunucusunu yormayacak en hafif ve en sade queue ayarları
+        // Render sunucusunun yavaşlığına karşı maksimum tolerans ayarları
         const queue = player.nodes.create(inter.guild, {
             metadata: { channel: inter.channel },
             volume: client.config.opt.volume || 75,
-            bufferingTimeout: 3000 // Yavaş sunucularda sesi yüklemek için bota zaman tanır
+            bufferingTimeout: 15000, // Süreyi 15 saniyeye çıkardık ki AbortError vermesin kanka
+            connectionTimeout: 30000, // Ses kanalına bağlanma süresini de uzattık
+            noReadyTimeout: true // Hazır olana kadar botun işlemi iptal etmesini engeller
         });
 
         try {
