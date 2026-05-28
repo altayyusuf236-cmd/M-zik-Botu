@@ -23,7 +23,7 @@ player.extractors.register(YoutubeiExtractor, {});
 console.clear();
 require('./loader');
 
-client.login(client.config.app.token).catch(async (e) => {
+client.login(client.config.app.TOKEN).catch(async (e) => {
     if (e.message === 'An invalid token was provided.') {
         require('./process_tools').throwConfigError('app', 'token', '\n\t   ❌ Invalid Token Provided! ❌ \n\tChange the token in the config file\n');
     } else {
