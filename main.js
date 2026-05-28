@@ -32,15 +32,19 @@ global.client = new Client({
 client.config = require('./config');
 
 if (process.env.YOUTUBE_COOKIE) {
+    // Çerezin içindeki tüm gizli satır atlamalarını ve kenar boşluklarını temizler
+    const cleanCookie = process.env.YOUTUBE_COOKIE.replace(/[\r\n]+/g, '').trim();
+    
     play.setToken({
         youtube: {
-            cookie: process.env.YOUTUBE_COOKIE.trim()
+            cookie: cleanCookie
         }
     });
-    console.log("✅ YouTube Cookie başarıyla .env üzerinden sisteme yüklendi.");
+    console.log("✅ YouTube Cookie başarıyla temizlenerek sisteme yüklendi.");
 } else {
     console.log("❌ UYARI: .env veya Render ayarlarında YOUTUBE_COOKIE bulunamadı!");
 }
+
 
 // Player başlatılıyor
 const player = new Player(client, client.config.opt.discordPlayer);
