@@ -1,14 +1,16 @@
 require('dotenv').config(); //discord.gg/vsc ❤️ oxyinc, can066
 
+// main.js dosyanın en üst kısmı böyle olmalı:
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+// Render bize PORT değişkenini verir, onu kullanmalıyız.
+const port = process.env.PORT || 3000; 
 
 app.get('/', (req, res) => {
   res.send('Bot aktif ve çalışıyor!');
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Web sunucusu ${port} portunda dinliyor.`);
 });
 
