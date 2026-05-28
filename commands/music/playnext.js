@@ -16,13 +16,15 @@ module.exports = {
     ],
 
     async execute({ inter, client }) {
-      await inter.deferReply();
+        // Discord'un 3 saniye sınırını aşmamak ve "Düşünüyor..." hatasını çözmek için yanıtı erteliyoruz
+        await inter.deferReply(); 
+
         const player = useMainPlayer();
         const song = inter.options.getString('song');
 
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.AUTO // Burayı da AUTO yapıyoruz kanka
+            searchEngine: QueryType.AUTO // En kararlı otomatik arama modu
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
@@ -44,6 +46,7 @@ module.exports = {
 
             if (!queue.connection) await queue.connect(inter.member.voice.channel);
 
+            // Şarkıyı sıranın EN BAŞINA (0. indekse) ekliyoruz
             queue.insertTrack(res.tracks[0], 0); 
 
             if (!queue.isPlaying()) await queue.node.play();

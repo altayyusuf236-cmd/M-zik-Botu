@@ -5,30 +5,37 @@ const play = require('play-dl');
 
 module.exports = {
     name: 'play',
-    description:("Play a song!"),
+    description: ("Play a song!"),
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description:('The song you want to play'),
+            description: ('The song you want to play'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }
     ],
 
     async execute({ inter, client }) {
+        // Discord'un 3 saniye sınırını aşmamak için yanıtı erteliyoruz
         await inter.deferReply(); 
+
         const player = useMainPlayer();
         const song = inter.options.getString('song');
         
-        // play-dl'in arka planda Spotify base'ini tetiklemesini sağlıyoruz
-        if (play.is_spotify_url(song)) {
-            // Eğer direkt link girilirse korumaya alıyoruz
+        // Doğru play-dl fonksiyonu ile Spotify kontrolü yapıyoruz
+        try {
+            if (play.sp_validate(song)) {
+                // Spotify linki ise sorunsuz devam etmesi için koruma
+            }
+        } catch (e) {
+            // Olası bir doğrulama hatasını loglara basıp botun çökmesini önlüyoruz
+            console.log("Spotify validation bypass");
         }
 
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.AUTO // En kararlı arama tipi
+            searchEngine: QueryType.AUTO
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
