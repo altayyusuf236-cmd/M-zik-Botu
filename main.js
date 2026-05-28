@@ -35,7 +35,7 @@ play.setToken({
         cookie: process.env.YOUTUBE_COOKIE
     }
 });
-const player = new Player(client, client
+const player = new Player(client, client)
 // play-dl extractor'ını discord-player'a tanıtıyoruz
 player.extractors.register(require('@discord-player/extractor').PlayDlExtractor, {});
 
