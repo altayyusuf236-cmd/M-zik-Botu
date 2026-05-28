@@ -1,3 +1,4 @@
+console.log("Loader.js yuklenmeye basladi...");
 const { readdirSync } = require("fs");
 const { Collection } = require("discord.js");
 const { useMainPlayer } = require("discord-player");
@@ -66,4 +67,8 @@ GetTranslationModule().then(() => {
   async function parseLog(txtEvent) {
     console.log(await Translate(txtEvent, null));
   }
+}).catch((err) => {
+  console.error("!!! LOADER HATA VERDI !!!");
+  console.error(err);
+  process.exit(1); // Botu hatalı bir şekilde kapat ki Render loglarında hatayı görelim
 });
