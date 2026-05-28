@@ -36,6 +36,7 @@ module.exports = { //discord.gg/vsc ❤️ oxyinc, can066
         leaveOnEndCooldown: 30000,
         discordPlayer: {
             ytdlOptions: {
+              cookie: process.env.YOUTUBE_COOKIE
                 quality: 'highestaudio',
                 highWaterMark: 1 << 20
             }
