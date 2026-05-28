@@ -1,4 +1,4 @@
-const { QueryType, useMainPlayer } = require('discord-player'); //discord.gg/vsc ❤️ oxyinc, can066
+const { useMainPlayer } = require('discord-player'); //discord.gg/vsc ❤️ oxyinc, can066
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { Translate } = require('../../process_tools');
 
@@ -21,38 +21,43 @@ module.exports = {
         
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
-        // Şarkıyı aratıyoruz
         const res = await player.search(song, {
-            requestedBy: inter.member,
-            searchEngine: QueryType.AUTO
-        });
+            requestedBy: inter.member
+        }).catch(() => null);
 
-        if (!res || !res.tracks.length) {
+        if (!res || !res.tracks || !res.tracks.length) {
             defaultEmbed.setAuthor({ name: await Translate(`No results found... try again ? <❌>`) });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
 
-        try {
-            // EN GARANTİ OYNATMA YÖNTEMİ: Doğrudan play fonksiyonuna ses kanalını ve ilk track'i veriyoruz
-            await player.play(inter.member.voice.channel, res.tracks[0], {
-                nodeOptions: {
-                    metadata: {
-                        channel: inter.channel
-                    },
-                    volume: client.config.opt.volume,
-                    leaveOnEmpty: client.config.opt.leaveOnEmpty,
-                    leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
-                    leaveOnEnd: client.config.opt.leaveOnEnd,
-                    leaveOnEndCooldown: client.config.opt.leaveOnEndCooldown,
-                }
-            });
+        // Render sunucusunu yormayacak en hafif ve en sade queue ayarları
+        const queue = player.nodes.create(inter.guild, {
+            metadata: { channel: inter.channel },
+            volume: client.config.opt.volume || 75,
+            bufferingTimeout: 3000 // Yavaş sunucularda sesi yüklemek için bota zaman tanır
+        });
 
-            defaultEmbed.setAuthor({ name: await Translate(`Loading <${res.tracks[0].title}> to the queue... <✅>`) });
-            await inter.editReply({ embeds: [defaultEmbed] });
+        try {
+            if (!queue.connection) await queue.connect(inter.member.voice.channel);
+        } catch (err) {
+            defaultEmbed.setAuthor({ name: await Translate(`I can't join the voice channel... try again ? <❌>`) });
+            return inter.editReply({ embeds: [defaultEmbed] });
+        }
+
+        try {
+            queue.addTrack(res.tracks[0]);
+            
+            if (!queue.isPlaying()) {
+                await queue.node.play();
+            }
+
+            const trackTitle = res.tracks[0].title || "Şarkı";
+            defaultEmbed.setAuthor({ name: await Translate(`Loading <${trackTitle}> to the queue... <✅>`) });
+            return inter.editReply({ embeds: [defaultEmbed] });
 
         } catch (error) {
-            console.log(`Play error: ${error}`);
-            defaultEmbed.setAuthor({ name: await Translate(`I can't join the voice channel... try again ? <❌>`) });
+            console.log(`Oynatma hatası: ${error}`);
+            defaultEmbed.setAuthor({ name: await Translate(`An error occurred while playing... <❌>`) });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
     }
