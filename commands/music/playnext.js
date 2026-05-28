@@ -16,6 +16,7 @@ module.exports = {
     ],
 
     async execute({ inter, client }) {
+      await inter.deferReply();
         const player = useMainPlayer();
         const song = inter.options.getString('song');
 
