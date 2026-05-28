@@ -8,8 +8,20 @@ const player = useMainPlayer();
 
 // Extractor buraya geldi (Asıl oyuncu burası)
 const { PlayDlExtractor } = require('@discord-player/extractor');
-player.extractors.register(PlayDlExtractor, {});
-console.log("✅ PlayDlExtractor, loader üzerinden sisteme kaydedildi.");
+// loader.js içinde:
+const { PlayDlExtractor } = require('@discord-player/extractor');
+
+try {
+    // Bazı sürümlerde PlayDlExtractor'ı doğrudan değil de 'new' ile kullanmak gerekebilir
+    // Ayrıca kayıt ederken hata almamak için şu yöntemi deneyelim:
+    const extractor = new PlayDlExtractor(); 
+    player.extractors.register(extractor, {});
+    console.log("✅ PlayDlExtractor başarıyla örneklendi ve kaydedildi.");
+} catch (e) {
+    console.error("❌ Extractor kaydedilirken hata oluştu: " + e.message);
+    // Eğer bu da olmazsa, en azından botun tamamen çökmesini engellemek için
+    // burayı boş bırakabilirsin, en azından bot çalışmaya devam eder.
+}
 
 //discord.gg/vsc ❤️ oxyinc, can066
 
