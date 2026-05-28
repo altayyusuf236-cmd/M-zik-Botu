@@ -6,15 +6,6 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
-// HATA ÇÖZÜMÜ: Manuel register yerine güvenli yükleme
-try {
-    const { PlayDlExtractor } = require('@discord-player/extractor');
-    player.extractors.register(PlayDlExtractor, {});
-    console.log("✅ PlayDlExtractor başarıyla kaydedildi.");
-} catch (e) {
-    console.log("⚠️ Extractor otomatik yüklenemedi (sürüm uyumsuzluğu), bot devam ediyor.");
-}
-
 //discord.gg/vsc ❤️ oxyinc, can066
 
 const { Translate, GetTranslationModule } = require("./process_tools");
