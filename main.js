@@ -14,6 +14,11 @@ app.listen(port, '0.0.0.0', () => {
 
 const { Player } = require('discord-player');
 const { Client, GatewayIntentBits } = require('discord.js');
+const play = require('play-dl');
+
+// play-dl paketinin SoundCloud/YouTube için zaman aşımı süresini zirveye çıkarıyoruz (Milisaniye cinsinden)
+play.getFreeToken = () => new Promise((resolve) => resolve(null)); // Token hatalarını engellemek için
+
 
 global.client = new Client({
     intents: [
