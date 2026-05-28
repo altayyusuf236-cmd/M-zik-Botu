@@ -10,12 +10,13 @@ const player = useMainPlayer();
 const { PlayDlExtractor } = require('@discord-player/extractor');
 
 try {
-    const extractor = new PlayDlExtractor(); 
-    player.extractors.register(extractor, {});
-    console.log("✅ PlayDlExtractor başarıyla örneklendi ve kaydedildi.");
+    player.extractors.register(PlayDlExtractor, {});
+    console.log("✅ PlayDlExtractor başarıyla kaydedildi.");
 } catch (e) {
-    console.error("❌ Extractor kaydedilirken hata oluştu: " + e.message);
+    // Burada hata alırsan botu hiç etkilemeyecek şekilde sadece loga yazdırıyoruz
+    console.log("⚠️ Extractor otomatik kaydedilemedi, bot devam ediyor.");
 }
+
 
 //discord.gg/vsc ❤️ oxyinc, can066
 
