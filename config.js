@@ -37,7 +37,7 @@ module.exports = { //discord.gg/vsc ❤️ oxyinc, can066
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
-                highWaterMark: 1 << 25
+                highWaterMark: 1 << 20
             }
         }
     }
