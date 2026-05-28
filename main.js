@@ -31,11 +31,16 @@ global.client = new Client({
 
 client.config = require('./config');
 
-play.setToken({
-    youtube: {
-        cookie: process.env.YOUTUBE_COOKIE
-    }
-});
+if (process.env.YOUTUBE_COOKIE) {
+    play.setToken({
+        youtube: {
+            cookie: process.env.YOUTUBE_COOKIE
+        }
+    });
+    console.log("✅ YouTube Cookie başarıyla .env üzerinden sisteme yüklendi.");
+} else {
+    console.log("❌ UYARI: .env veya Render ayarlarında YOUTUBE_COOKIE bulunamadı!");
+}
 
 // Player başlatılıyor
 const player = new Player(client, client.config.opt.discordPlayer);
