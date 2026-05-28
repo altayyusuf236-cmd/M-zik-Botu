@@ -1,43 +1,31 @@
 const { QueryType, useMainPlayer } = require('discord-player'); //discord.gg/vsc ❤️ oxyinc, can066
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { Translate } = require('../../process_tools');
-const play = require('play-dl');
 
 module.exports = {
     name: 'play',
-    description: ("Play a song!"),
+    description: "Play a song!",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: ('The song you want to play'),
+            description: 'The song you want to play',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
     ],
 
     async execute({ inter, client }) {
- 
-
         const player = useMainPlayer();
         const song = inter.options.getString('song');
         
-        // Doğru play-dl fonksiyonu ile Spotify kontrolü yapıyoruz
-        try {
-            if (play.sp_validate(song)) {
-                // Spotify linki ise sorunsuz devam etmesi için koruma
-            }
-        } catch (e) {
-            // Olası bir doğrulama hatasını loglara basıp botun çökmesini önlüyoruz
-            console.log("Spotify validation bypass");
-        }
+        let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
+        // Botun kilitlenmesini önlemek için doğrudan esnek AUTO aramaya gönderiyoruz
         const res = await player.search(song, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
-
-        let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
         if (!res?.tracks.length) {
             defaultEmbed.setAuthor({ name: await Translate(`No results found... try again ? <❌>`) });
@@ -45,7 +33,7 @@ module.exports = {
         }
 
         try {
-            const { track } = await player.play(inter.member.voice.channel, song, {
+            const { track } = await player.play(inter.member.voice.channel, res, {
                 nodeOptions: {
                     metadata: {
                         channel: inter.channel
