@@ -6,6 +6,11 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
+// Extractor buraya geldi (Asıl oyuncu burası)
+const { PlayDlExtractor } = require('@discord-player/extractor');
+player.extractors.register(PlayDlExtractor, {});
+console.log("✅ PlayDlExtractor, loader üzerinden sisteme kaydedildi.");
+
 //discord.gg/vsc ❤️ oxyinc, can066
 
 const { Translate, GetTranslationModule } = require("./process_tools");
@@ -70,5 +75,5 @@ GetTranslationModule().then(() => {
 }).catch((err) => {
   console.error("!!! LOADER HATA VERDI !!!");
   console.error(err);
-  process.exit(1); // Botu hatalı bir şekilde kapat ki Render loglarında hatayı görelim
+  process.exit(1);
 });
