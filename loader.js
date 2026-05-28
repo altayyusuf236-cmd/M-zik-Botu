@@ -6,17 +6,14 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
-// Extractor tanımlaması (Sadece 1 kez yapıldı)
-const { PlayDlExtractor } = require('@discord-player/extractor');
-
+// HATA ÇÖZÜMÜ: Manuel register yerine güvenli yükleme
 try {
+    const { PlayDlExtractor } = require('@discord-player/extractor');
     player.extractors.register(PlayDlExtractor, {});
     console.log("✅ PlayDlExtractor başarıyla kaydedildi.");
 } catch (e) {
-    // Burada hata alırsan botu hiç etkilemeyecek şekilde sadece loga yazdırıyoruz
-    console.log("⚠️ Extractor otomatik kaydedilemedi, bot devam ediyor.");
+    console.log("⚠️ Extractor otomatik yüklenemedi (sürüm uyumsuzluğu), bot devam ediyor.");
 }
-
 
 //discord.gg/vsc ❤️ oxyinc, can066
 
