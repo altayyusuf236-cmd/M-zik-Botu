@@ -17,13 +17,12 @@ module.exports = {
 
     async execute({ inter, client }) {
         const player = useMainPlayer();
-
         const song = inter.options.getString('song');
         
-        // Arama motorunu SoundCloud olarak ayarlıyoruz
+        // Arama motorunu Spotify yapıyoruz
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.SOUNDCLOUD_SEARCH
+            searchEngine: QueryType.SPOTIFY_SEARCH
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');

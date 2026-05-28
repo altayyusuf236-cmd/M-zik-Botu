@@ -6,11 +6,11 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
-// SoundCloud Çözücüsünü Güvenli Şekilde Yüklüyoruz
+// Spotify Çözücüsünü Güvenli Şekilde Yüklüyoruz
 try {
-    const { SoundCloudExtractor } = require('@discord-player/extractor');
-    player.extractors.register(SoundCloudExtractor, {});
-    console.log("✅ SoundCloudExtractor başarıyla yüklendi. Artık YouTube derdi yok!");
+    const { SpotifyExtractor } = require('@discord-player/extractor');
+    player.extractors.register(SpotifyExtractor, {});
+    console.log("✅ SpotifyExtractor başarıyla yüklendi! Artık engel yok.");
 } catch (e) {
     console.log("⚠️ Extractor yüklenemedi: " + e.message);
 }
