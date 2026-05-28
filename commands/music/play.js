@@ -19,9 +19,11 @@ module.exports = {
         const player = useMainPlayer();
 
         const song = inter.options.getString('song');
+        
+        // Arama motorunu SoundCloud olarak ayarlıyoruz
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.AUTO
+            searchEngine: QueryType.SOUNDCLOUD_SEARCH
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');

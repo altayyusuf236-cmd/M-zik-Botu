@@ -6,11 +6,11 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
-// Müzik çalması için gerekli extractor'ı ekliyoruz
+// SoundCloud Çözücüsünü Güvenli Şekilde Yüklüyoruz
 try {
-    const { YoutubeExtractor } = require('@discord-player/extractor');
-    player.extractors.register(YoutubeExtractor, {});
-    console.log("✅ YoutubeExtractor başarıyla yüklendi.");
+    const { SoundCloudExtractor } = require('@discord-player/extractor');
+    player.extractors.register(SoundCloudExtractor, {});
+    console.log("✅ SoundCloudExtractor başarıyla yüklendi. Artık YouTube derdi yok!");
 } catch (e) {
     console.log("⚠️ Extractor yüklenemedi: " + e.message);
 }

@@ -21,7 +21,7 @@ module.exports = {
 
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.AUTO
+            searchEngine: QueryType.SOUNDCLOUD_SEARCH
         });
 
         if (!res?.tracks.length) return inter.editReply({ content: await Translate(`No results found <${inter.member}>... try again ? <❌>`) });
