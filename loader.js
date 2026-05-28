@@ -6,6 +6,15 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
+// Müzik çalması için gerekli extractor'ı ekliyoruz
+try {
+    const { YoutubeExtractor } = require('@discord-player/extractor');
+    player.extractors.register(YoutubeExtractor, {});
+    console.log("✅ YoutubeExtractor başarıyla yüklendi.");
+} catch (e) {
+    console.log("⚠️ Extractor yüklenemedi: " + e.message);
+}
+
 //discord.gg/vsc ❤️ oxyinc, can066
 
 const { Translate, GetTranslationModule } = require("./process_tools");
