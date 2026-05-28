@@ -1,19 +1,24 @@
 console.log("Loader.js yuklenmeye basladi...");
 const { readdirSync } = require("fs");
 const { Collection } = require("discord.js");
-const { useMainPlayer } = require("discord-player");
+const { Player } = require("discord-player");
+
 client.commands = new Collection();
 const commandsArray = [];
-const player = useMainPlayer();
 
-// Spotify Çözücüsünü Güvenli Şekilde Yüklüyoruz
-try {
-    const { SpotifyExtractor } = require('@discord-player/extractor');
-    player.extractors.register(SpotifyExtractor, {});
-    console.log("✅ SpotifyExtractor başarıyla yüklendi! Artık engel yok.");
-} catch (e) {
-    console.log("⚠️ Extractor yüklenemedi: " + e.message);
+// Discord Player'ı ana yöntemle başlatıyoruz ve tüm extractor'ları otomatik yüklüyoruz
+const player = new Player(client);
+
+async function initPlayer() {
+    try {
+        // Bu tek satır, arkadaki tüm ses köprülerini (Spotify dahil) otomatik ve hatasız yükler
+        await player.extractors.loadDefault();
+        console.log("✅ Tüm ses extractor'ları başarıyla yüklendi!");
+    } catch (e) {
+        console.log("⚠️ Extractor yükleme hatası: " + e.message);
+    }
 }
+initPlayer();
 
 //discord.gg/vsc ❤️ oxyinc, can066
 
