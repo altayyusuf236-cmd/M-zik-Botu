@@ -21,19 +21,20 @@ module.exports = {
         
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
-        // Botun kilitlenmesini önlemek için doğrudan esnek AUTO aramaya gönderiyoruz
+        // Şarkıyı aratıyoruz
         const res = await player.search(song, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
 
-        if (!res?.tracks.length) {
+        if (!res || !res.tracks.length) {
             defaultEmbed.setAuthor({ name: await Translate(`No results found... try again ? <❌>`) });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
 
         try {
-            const { track } = await player.play(inter.member.voice.channel, res, {
+            // EN GARANTİ OYNATMA YÖNTEMİ: Doğrudan play fonksiyonuna ses kanalını ve ilk track'i veriyoruz
+            await player.play(inter.member.voice.channel, res.tracks[0], {
                 nodeOptions: {
                     metadata: {
                         channel: inter.channel
@@ -46,8 +47,9 @@ module.exports = {
                 }
             });
 
-            defaultEmbed.setAuthor({ name: await Translate(`Loading <${track.title}> to the queue... <✅>`) });
+            defaultEmbed.setAuthor({ name: await Translate(`Loading <${res.tracks[0].title}> to the queue... <✅>`) });
             await inter.editReply({ embeds: [defaultEmbed] });
+
         } catch (error) {
             console.log(`Play error: ${error}`);
             defaultEmbed.setAuthor({ name: await Translate(`I can't join the voice channel... try again ? <❌>`) });
