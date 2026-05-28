@@ -34,11 +34,16 @@ module.exports = { //discord.gg/vsc ❤️ oxyinc, can066
         leaveOnEmptyCooldown: 30000,
         leaveOnEnd: true,
         leaveOnEndCooldown: 30000,
-        discordPlayer: {
+                discordPlayer: {
             ytdlOptions: {
-              cookie: process.env.YOUTUBE_COOKIE,
                 quality: 'highestaudio',
-                highWaterMark: 1 << 20
+                highWaterMark: 1 << 25, // İndirme havuzunu büyüterek AbortError'ü engeller
+                requestOptions: {
+                    headers: {
+                        // SoundCloud engeline takılmamak için tarayıcı taklidi yapar
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                    }
+                }
             }
         }
     }
