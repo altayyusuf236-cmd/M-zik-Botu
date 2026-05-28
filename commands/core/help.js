@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js'); //discord.gg/vsc ❤️ oxyinc, can066
+const { EmbedBuilder } = require('discord.js'); //discord.gg/jayus ❤️ oxyinc, can066
 const { Translate } = require('../../process_tools');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
             .setDescription(await Translate('Here are all the commands I have!'))
             .addFields([{ name: `Enabled - ${commands.size}`, value: commands.map(x => `\`${x.name}\``).join(' | ') }])
             .setTimestamp()
-            .setFooter({ text: await Translate('discord.gg/vsc ❤️'), iconURL: inter.member.avatarURL({ dynamic: true }) });
+            .setFooter({ text: await Translate('discord.gg/jayus ❤️'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ embeds: [embed] });
     }

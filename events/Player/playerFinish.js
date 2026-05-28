@@ -1,4 +1,4 @@
-module.exports = (queue) => { //discord.gg/vsc ❤️ oxyinc, can066
+module.exports = (queue) => { //discord.gg/jayus ❤️ oxyinc, can066
     if (queue.metadata.lyricsThread) {
         queue.metadata.lyricsThread.delete();
         queue.setMetadata({

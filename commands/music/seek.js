@@ -1,4 +1,4 @@
-const ms = require('ms'); //discord.gg/vsc ❤️ oxyinc, can066
+const ms = require('ms'); //discord.gg/jayus ❤️ oxyinc, can066
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');

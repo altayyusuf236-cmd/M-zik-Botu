@@ -1,4 +1,4 @@
-const { QueueRepeatMode, useQueue } = require('discord-player'); //discord.gg/vsc ❤️ oxyinc, can066
+const { QueueRepeatMode, useQueue } = require('discord-player'); //discord.gg/jayus ❤️ oxyinc, can066
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { Translate } = require('../../process_tools');
 

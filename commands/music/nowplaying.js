@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js'); //discord.gg/vsc ❤️ oxyinc, can066
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js'); //discord.gg/jayus ❤️ oxyinc, can066
 const { useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');
 
@@ -27,7 +27,7 @@ module.exports = {
             .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setThumbnail(track.thumbnail)
             .setDescription(await Translate(`Volume <**${queue.node.volume}**%> <\n> <Duration **${trackDuration}**> <\n> Progress <${progress}> <\n >Loop mode <**${methods[queue.repeatMode]}**> <\n>Requested by <${track.requestedBy}>`))
-            .setFooter({ text: 'discord.gg/vsc ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: 'discord.gg/jayus ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setColor('#2f3136')
             .setTimestamp();
         

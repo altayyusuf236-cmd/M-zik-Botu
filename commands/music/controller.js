@@ -1,7 +1,7 @@
 const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ChannelType, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const { Translate } = require('../../process_tools');
 
-//discord.gg/vsc ❤️ oxyinc, can066
+//discord.gg/jayus ❤️ oxyinc, can066
 
 module.exports = {
     name: 'controller',
@@ -25,7 +25,7 @@ module.exports = {
             .setTitle(await Translate('Control your music with the buttons below !'))
             .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
             .setColor('#2f3136')
-            .setFooter({ text: 'discord.gg/vsc ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) });
+            .setFooter({ text: 'discord.gg/jayus ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ content: await Translate(`Sending controller to <${channel}>... <✅>`) });
 

@@ -1,4 +1,4 @@
-const { Translate } = require('../process_tools'); //discord.gg/vsc ❤️ oxyinc, can066
+const { Translate } = require('../process_tools'); //discord.gg/jayus ❤️ oxyinc, can066
 
 const maxVol = client.config.opt.maxVol;
 

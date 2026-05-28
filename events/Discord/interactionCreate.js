@@ -1,4 +1,4 @@
-const { EmbedBuilder, InteractionType } = require('discord.js'); //discord.gg/vsc ❤️ oxyinc, can066
+const { EmbedBuilder, InteractionType } = require('discord.js'); //discord.gg/jayus ❤️ oxyinc, can066
 const { useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');
 
@@ -50,4 +50,4 @@ module.exports = async (client, inter) => {
         const button = require(path);
         if (button) return button({ client, inter, customId, queue });
     }
-} //discord.gg/vsc <3 oxyinc, can066
+} //discord.gg/jayus <3 oxyinc, can066

@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js'); //discord.gg/vsc ❤️ oxyinc, can066
+const { EmbedBuilder } = require('discord.js'); //discord.gg/jayus ❤️ oxyinc, can066
 const { useMainPlayer, useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');
 
@@ -32,7 +32,7 @@ module.exports = {
                 name: lyrics.artistName
             })
             .setDescription(trimmedLyrics.length === 1997 ? `${trimmedLyrics}...` : trimmedLyrics)
-            .setFooter({ text: 'discord.gg/vsc ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: 'discord.gg/jayus ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setTimestamp()
             .setColor('#2f3136');
 

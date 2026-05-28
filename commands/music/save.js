@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js"); //discord.gg/vsc ❤️ oxyinc, can066
+const { EmbedBuilder } = require("discord.js"); //discord.gg/jayus ❤️ oxyinc, can066
 const { useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');
 

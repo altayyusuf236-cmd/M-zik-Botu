@@ -19,10 +19,9 @@ module.exports = {
         const player = useMainPlayer();
         const song = inter.options.getString('song');
 
-        // Spotify üzerinden aratıyoruz
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.SPOTIFY_SEARCH
+            searchEngine: QueryType.AUTO // Burayı da AUTO yapıyoruz kanka
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');

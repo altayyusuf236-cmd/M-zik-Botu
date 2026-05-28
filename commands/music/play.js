@@ -1,6 +1,7 @@
 const { QueryType, useMainPlayer } = require('discord-player'); //discord.gg/vsc ❤️ oxyinc, can066
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { Translate } = require('../../process_tools');
+const play = require('play-dl');
 
 module.exports = {
     name: 'play',
@@ -19,10 +20,14 @@ module.exports = {
         const player = useMainPlayer();
         const song = inter.options.getString('song');
         
-        // Arama motorunu Spotify yapıyoruz
+        // play-dl'in arka planda Spotify base'ini tetiklemesini sağlıyoruz
+        if (play.is_spotify_url(song)) {
+            // Eğer direkt link girilirse korumaya alıyoruz
+        }
+
         const res = await player.search(song, {
             requestedBy: inter.member,
-            searchEngine: QueryType.SPOTIFY_SEARCH
+            searchEngine: QueryType.AUTO // En kararlı arama tipi
         });
 
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');

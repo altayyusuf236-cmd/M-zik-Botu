@@ -1,4 +1,4 @@
-const maxVol = client.config.opt.maxVol || 100; //discord.gg/vsc ❤️ oxyinc, can066
+const maxVol = client.config.opt.maxVol || 100; //discord.gg/jayus ❤️ oxyinc, can066
 const { ApplicationCommandOptionType } = require('discord.js');
 const { useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');

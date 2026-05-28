@@ -1,4 +1,4 @@
-const { Translate } = require('../process_tools'); //discord.gg/vsc ❤️ oxyinc, can066
+const { Translate } = require('../process_tools'); //discord.gg/jayus ❤️ oxyinc, can066
 
 module.exports = async ({ inter, queue }) => {
     if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing... try again ? <❌>`) });

@@ -50,10 +50,10 @@ Botu çalıştırmadan önce aşağıdaki gereksinimlerin yüklü olduğundan em
 
    Örnek `config.js`:
    ```javascript
-   module.exports = { //discord.gg/vsc ❤️ oxyinc, can066
+   module.exports = { //discord.gg/jayus ❤️ oxyinc, can066
     app: {
         token: 'TOKEN GİR',
-        playing: 'discord.gg/vsc',
+        playing: 'discord.gg/jayus',
         global: true, // Eğer global false olur ise sadece gelirlediğiniz sunucuda çalışır
         guild: 'SUNUCU ID', // GuildID
         extraMessages: false,
@@ -149,7 +149,7 @@ Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Daha fazla bilgi i
 
 Sorularınız veya önerileriniz için:
 
-- **Discord**: [discord.gg/vsc](https://discord.gg/vsc)
+- **Discord**: [discord.gg/jayus](https://discord.gg/jayus)
 - **GitHub Sorunları**: [Sorun Bildir](https://github.com/kullanici_adiniz/yeni-nesil-muzik-botu/issues)
 
 Bu müzik botu, sunucunuzda eğlenceli ve etkileşimli bir müzik deneyimi sunmak için tasarlandı. Keyfini çıkarın! 🎶
