@@ -1,9 +1,9 @@
 { 
-    "name": "oxy-music",
+    "name": "jayus müzik",
     "main": "main.js",
-    "author": "OxyDev",
+    "author": "qoldslitz",
     "version": "8.0.0",
-    "description": "discord.gg/vsc",
+    "description": "discord.gg/jayus",
     "scripts": {
         "start": "node --max-old-space-size=450 main.js"
     },

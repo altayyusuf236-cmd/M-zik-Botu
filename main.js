@@ -14,8 +14,8 @@ app.listen(port, () => {
 
 
 const { Player } = require('discord-player');
+const play = require('play-dl');
 const { Client, GatewayIntentBits } = require('discord.js');
-const { YoutubeiExtractor } = require('discord-player-youtubei');
 
 global.client = new Client({
     intents: [
@@ -30,8 +30,14 @@ global.client = new Client({
 
 client.config = require('./config');
 
-const player = new Player(client, client.config.opt.discordPlayer);
-player.extractors.register(YoutubeiExtractor, {});
+play.setToken({
+    youtube: {
+        cookie: process.env.YOUTUBE_COOKIE
+    }
+});
+const player = new Player(client, client
+// play-dl extractor'ını discord-player'a tanıtıyoruz
+player.extractors.register(require('@discord-player/extractor').PlayDlExtractor, {});
 
 console.clear();
 require('./loader');
